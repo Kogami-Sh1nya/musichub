@@ -1,0 +1,38 @@
+### 1. Проверка API без VK: health
+GET http://localhost:8000/health
+
+### 2. Старт авторизации
+GET http://localhost:8000/api/v1/auth/vk/start
+
+### 3. В mock-режиме откройте URL из предыдущего ответа в браузере.
+# Он автоматически пройдет mock VK login и создаст HttpOnly cookies.
+
+### 4. Профиль пользователя
+GET http://localhost:8000/api/v1/me
+
+### 5. Библиотека
+GET http://localhost:8000/api/v1/library?offset=0&limit=50
+
+### 6. Поиск
+GET http://localhost:8000/api/v1/search?q=midnight&offset=0&limit=50
+
+### 7. Добавление
+POST http://localhost:8000/api/v1/library/tracks
+Content-Type: application/json
+
+{
+  "owner_id": 100001,
+  "audio_id": 2
+}
+
+### 8. Получение трека
+GET http://localhost:8000/api/v1/tracks/100001/2
+
+### 9. Удаление
+DELETE http://localhost:8000/api/v1/library/tracks/100001/2
+
+### 10. Refresh
+POST http://localhost:8000/api/v1/auth/refresh
+
+### 11. Logout
+POST http://localhost:8000/api/v1/auth/logout
